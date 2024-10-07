@@ -1,0 +1,72 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "microorganism_snps"
+version = "0.1.0"
+description = "get SNPs from microorganisms with multiple strains"
+readme = "README.rst"
+authors = [
+  {name = "Chenchen Yang", email = "foreverycc@gmail.com"}
+]
+maintainers = [
+  {name = "Chenchen Yang", email = "foreverycc@gmail.com"}
+]
+classifiers = [
+
+]
+license = {text = "MIT license"}
+dependencies = [
+  "typer",
+  "argparse",
+  "shutil",
+  "glob",
+  "time",
+  "subprocess",
+  "logging",
+  "pandas",
+  "termcolor",
+  "Bio"
+]
+
+[project.optional-dependencies]
+dev = [
+    "coverage",  # testing
+    "mypy",  # linting
+    "pytest",  # testing
+    "ruff"  # linting
+]
+
+[project.urls]
+
+bugs = "https://github.com/foreverycc/microorganism_snps/issues"
+changelog = "https://github.com/foreverycc/microorganism_snps/blob/master/changelog.md"
+homepage = "https://github.com/foreverycc/microorganism_snps"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.package-data]
+"*" = ["*.*"]
+
+
+
+
+# Mypy
+# ----
+
+[tool.mypy]
+files = "."
+
+# Use strict defaults
+strict = true
+warn_unreachable = true
+warn_no_return = true
+
+[[tool.mypy.overrides]]
+# Don't require test functions to include types
+module = "tests.*"
+allow_untyped_defs = true
+disable_error_code = "attr-defined"
+
