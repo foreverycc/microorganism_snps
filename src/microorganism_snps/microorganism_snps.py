@@ -252,7 +252,7 @@ def main(args = None):
     
 if __name__ == "__main__":
 
-    parser = argparse.ArgumentParser(description = "get SNP file for bacteria or viruses with multiple strains.")
+    parser = argparse.ArgumentParser(description = "get SNP info for bacteria or viruses with multiple strains.")
     parser.add_argument("--wkdir", help = "working directory")
     parser.add_argument("--outputbase", help = "output name base.")
     parser.add_argument("--refGenome", help = "reference fasta sequence for non-human genome build (default=/dev/null).", default = "/dev/null")
