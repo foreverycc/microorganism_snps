@@ -19,15 +19,9 @@ classifiers = [
 license = {text = "MIT license"}
 dependencies = [
   "typer",
-  "argparse",
-  "shutil",
-  "glob",
-  "time",
-  "subprocess",
-  "logging",
   "pandas",
   "termcolor",
-  "Bio"
+  "biopython"
 ]
 
 [project.optional-dependencies]
