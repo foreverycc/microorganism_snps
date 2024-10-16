@@ -1,0 +1,14 @@
+name: microorganism_snps
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python=3.9
+  - biopython=1.79
+  - bcftools=1.15
+  - samtools=1.15
+  - bwa=0.7.17
+  - pip
+  - pip:
+    - .

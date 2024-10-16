@@ -19,7 +19,7 @@ def test_main():
         wkdir="./",
         outputbase="test_output",
         refGenome="NC_006273.2",
-        inputFasta="./tests/cmv_sequences.fasta",
+        inputFasta="./tests/cmv_50_strains.fasta",
         date="2024-10-16",
         minFragSize=100,
         minDepth=10,
