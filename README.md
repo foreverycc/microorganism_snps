@@ -56,27 +56,25 @@ Here's a basic example of how to use the microorganism_snps package:
 
 ```
 usage: microorganism_snps [-h] [--inputFasta INPUTFASTA] [--refGenome REFGENOME] [--wkdir WKDIR] [--outputbase OUTPUTBASE]
-                          [--date DATE] [--minFragSize MINFRAGSIZE] [--minDepth MINDEPTH] [--minFreq MINFREQ]
-                          [--segmentSize SEGMENTSIZE]
+                          [--minFragSize MINFRAGSIZE] [--minDepth MINDEPTH] [--minFreq MINFREQ] [--segmentSize SEGMENTSIZE]
 
 Microorganism SNPs analysis
 
 optional arguments:
   -h, --help            show this help message and exit
   --inputFasta INPUTFASTA
-                        input fasta sequence for various strains sequences (default =/dev/null).
+                        [required] input fasta sequence for various strains sequences.
   --refGenome REFGENOME
-                        reference fasta sequence ID.
-  --wkdir WKDIR         working directory, default = ./
+                        [required] reference fasta sequence ID.
+  --wkdir WKDIR         [optional] working directory (default='./')
   --outputbase OUTPUTBASE
-                        output name base, default=output.
-  --date DATE           date, MUST in the format of '20241008'
+                        [optional] output name base (default='output').
   --minFragSize MINFRAGSIZE
-                        [optional] minimum fasta sequence size (default = 50)
-  --minDepth MINDEPTH   [optional] minimum depth required for variants searching (default = 10)
-  --minFreq MINFREQ     [optional] min alternative allele frequency (default = 0.05, range from 0 to 1)
+                        [optional] minimum fasta sequence size (default=50)
+  --minDepth MINDEPTH   [optional] minimum depth required for variants searching (default=10)
+  --minFreq MINFREQ     [optional] min alternative allele frequency (default=0.05, range from 0 to 1)
   --segmentSize SEGMENTSIZE
-                        [optional] segment size for long sequences (default = 10000)
+                        [optional] segment size for long sequences (default=10000)
 ```
 
 

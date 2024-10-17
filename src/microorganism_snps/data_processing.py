@@ -15,7 +15,7 @@ def filter_fasta(input_fasta, min_frag_size):
     filtered_seq_dict = {seq: seq_dict[seq] for seq in seq_dict if len(seq_dict[seq]) > min_frag_size}
     return filtered_seq_dict
 
-def split_ref_fasta(seq_dict, ref_genome):
+def separate_ref_fasta(seq_dict, ref_genome):
     '''
     separate the reference genome from the input fasta file
     '''

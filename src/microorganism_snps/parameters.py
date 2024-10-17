@@ -1,16 +1,17 @@
 import os
+from datetime import date
 
 class Param:
     '''
     Class to handle input parameters and set up basic settings for the analysis.
     '''
-    def __init__(self, wkdir, outputBase, refGenome, inputFasta, date, minFragSize, minDepth, minFreq, segmentSize):
+    def __init__(self, wkdir, outputBase, refGenome, inputFasta, minFragSize, minDepth, minFreq, segmentSize):
         # Initialize all parameters
         self.wkdir = wkdir
         self.outputBase = outputBase
         self.refGenome = refGenome
         self.inputFasta = inputFasta
-        self.date = date
+        self.date = str(date.today())
         self.minFragSize = int(minFragSize)
         self.minDepth = int(minDepth)
         self.minFreq = float(minFreq)

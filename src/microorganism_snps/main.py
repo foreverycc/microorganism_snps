@@ -1,6 +1,6 @@
 import os
 from .parameters import Param
-from .data_processing import filter_fasta, split_fasta, split_ref_fasta
+from .data_processing import filter_fasta, split_fasta, separate_ref_fasta
 from .snp_analysis import index_ref_genome, alignment, vcf_call, vcf_mod
 from .utils import conf_logger
 
@@ -19,7 +19,6 @@ def main(args):
                         outputBase=args.outputbase, 
                         refGenome=args.refGenome,
                         inputFasta=args.inputFasta,
-                        date=args.date,
                         minFragSize=args.minFragSize,
                         minDepth=args.minDepth,
                         minFreq=args.minFreq,
@@ -47,7 +46,7 @@ def main(args):
         logger.error(f"Reference genome {basic_param.refGenome} not found in the input sequences.")
         return
 
-    split_ref_fasta(seq_dict, basic_param.refGenome)
+    separate_ref_fasta(seq_dict, basic_param.refGenome)
     index_ref_genome(f"{basic_param.refGenome}.fa")
 
     # Step 2: Split fasta
