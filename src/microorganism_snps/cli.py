@@ -1,21 +1,28 @@
-"""Console script for microorganism_snps."""
-import microorganism_snps
+import argparse
+import sys
+from .microorganism_snps import main as run_analysis
 
-import typer
-from rich.console import Console
+def parse_arguments():
+    parser = argparse.ArgumentParser(description="Microorganism SNPs analysis")
+    parser.add_argument("--inputFasta", help="input fasta sequence for various strains sequences (default=/dev/null).", default="/dev/null")
+    parser.add_argument("--refGenome", help="reference fasta sequence ID.", default=None)
+    parser.add_argument("--wkdir", help="working directory", default="./")
+    parser.add_argument("--outputbase", help="output name base.", default="output")
+    parser.add_argument("--date", help="date, MUST in the format of '20241008'", default="20241008")
+    parser.add_argument("--minFragSize", help="[optional] minimum fasta sequence size (default = 50)", type=int, default=50)
+    parser.add_argument("--minDepth", help="[optional] minimum depth required for variants searching (default = 10)", type=int, default=10)
+    parser.add_argument("--minFreq", help="[optional] min alternative allele frequency (default = 0.05, range from 0 to 1)", type=float, default=0.05)
+    parser.add_argument("--segmentSize", help="[optional] segment size for long sequences (default = 10000)", type=int, default=10000)
+    return parser.parse_args()
 
-app = typer.Typer()
-console = Console()
-
-
-@app.command()
-def main():
-    """Console script for microorganism_snps."""
-    console.print("Replace this message by putting your code into "
-               "microorganism_snps.cli.main")
-    console.print("See Typer documentation at https://typer.tiangolo.com/")
-    
-
+def run_app():
+    """Entry point for the application."""
+    args = parse_arguments()
+    try:
+        run_analysis(args)
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        sys.exit(1)
 
 if __name__ == "__main__":
-    app()
+    run_app()
