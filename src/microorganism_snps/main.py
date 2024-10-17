@@ -32,17 +32,17 @@ def main(args):
     logger.info("Basic settings.")
     logger.info(basic_param)
 
-    # Check if refGenome is provided
-    if basic_param.refGenome is None:
-        logger.error("Reference genome is not provided. Please use the --refGenome argument.")
-        return
-
     # Step 1: Index reference genome
     logger.info("Index reference genome.")
     os.chdir(basic_param.wkdir)
     seq_dict = filter_fasta(basic_param.inputFasta, basic_param.minFragSize)
     
-    # Check if the reference genome exists in seq_dict
+    ## Check if refGenome is provided
+    if basic_param.refGenome is None:
+        logger.error("Reference genome is not provided. Please use the --refGenome argument.")
+        return
+    
+    ## Check if the reference genome exists in seq_dict
     if basic_param.refGenome not in seq_dict:
         logger.error(f"Reference genome {basic_param.refGenome} not found in the input sequences.")
         return
@@ -54,11 +54,11 @@ def main(args):
     logger.info("Filter and split FASTA sequences.")
     split_fasta(seq_dict, basic_param.segmentSize, basic_param.inputFasta_update)
 
-    # Step 3: Alignment
+    # Step 3: Perform lignment
     logger.info("Perform alignment.")
     alignment(f"{basic_param.refGenome}.fa", basic_param.inputFasta_update, basic_param.outputBase)
 
-    # Step 4: VCF calling and modification
+    # Step 4: VCF calling and processing
     logger.info("Call variants and modify VCF.")
     vcf_call(f"{basic_param.refGenome}.fa", basic_param.outputBase, basic_param.minDepth)
     vcf_mod(basic_param.outputBase, basic_param.minFreq)

@@ -89,7 +89,7 @@ def vcf_mod(output_base, min_freq):
         return [x for x in string.split(";") if "QS=" in x][0].replace("QS=", "").split(",")
 
     with open(f"{output_base}.raw.vcf") as fh_raw, \
-         open(f"{output_base}.proc.vcf", "w") as fh_proc, \
+         open(f"{output_base}.filtered.vcf", "w") as fh_proc, \
          open(f"{output_base}.selVariants.tab", "w") as fh_final:
         
         counter = 1
